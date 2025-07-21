@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS addEventListener</title>
+
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div class="alert-box" id="alert">
+    <p id="text">아이디 입력하세요</p>
+    <button id="close" >X</button>
+  </div>
+  
+  <button onclick="알림창열기('block','아이디를 입력하세요')">버튼1</button>
+  <button onclick="알림창열기('block', '비밀번호를 입력하세요')">버튼2</button>
+  
+
+  <script>
+    document.getElementById('close').addEventListener('click', function(){
+      알림창열기('none');
+    });
+
+
+    // 알림창 열기/닫기, 텍스트 수정
+    function 알림창열기 (구멍, 텍스트구멍){
+      document.getElementById('alert').style.display = 구멍;
+      document.getElementById('text').innerHTML= 텍스트구멍;
+    };    
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.alert-box {
+  background: skyblue;
+  padding: 20px;
+  color: #fff;
+  border-radius: 5px;
+
+  display: none;
+}
+
+#alert p {display: inline-block;}
+
+#close { background: none; border: none; color: #fff; font-size: 20px;}
+button {cursor: pointer;}
