@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>else if 문법</title>
+
+  <!-- 부트스트랩 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand">Navbar</span>
+      <button class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <ul class="list-group">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
+  </ul>
+  <button class="btn">모달창 </button>
+
+  <div class="black-bg">
+    <div class="white-bg">
+      <h4>로그인하세요</h4>
+      <!-- form은 서버로 유저정보 전송할때 사용, submit 누르면 action에 있는 주소로 이동 -->
+      <form action="success.html">
+        <div class="my-3">
+          <input type="text" class="form-control" id="email">
+        </div>
+        <div class="my-3">
+          <input type="password" class="form-control" id="pw">
+        </div>
+        <!-- type 주의할것 -->
+        <button type="submit" class="btn btn-primary" id="send">전송</button>
+        <button type="button" class="btn btn-danger" id="close">닫기</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script>
+    <!-- 모달창 스크립트 -->
+    $('.btn').on('click', function () {
+      $('.black-bg').addClass('show-modal');
+    });
+
+    $('#close').on('click', function () {
+      $('.black-bg').removeClass('show-modal');
+    });
+
+
+    //  gnb
+    document.querySelector('.navbar-toggler').addEventListener('click', function () {
+      document.querySelector('.list-group').classList.toggle('show');
+    });
+
+
+
+    //input값이 공백이면 알림창 띄움
+    // const inputElements = document.querySelectorAll('.form-control');
+
+    // document.querySelector('#send').addEventListener('click', function (e) {
+    //   const inputValue = inputElements[0].value.trim();
+    //   if (inputValue == '') {
+    //     e.preventDefault();
+    //     alert('아이디를 입력해주세요');
+    //   };
+    // });
+
+    //input값이 공백이면 알림창 띄움
+    $('form').on('submit', function (e) {
+      if (document.getElementById('email').value == '') {
+        alert('아이디를 입력해주세요');
+        e.preventDefault();
+            return false;
+
+      } else if (document.getElementById('pw').value == ''){
+        alert('비밀번호를 입력해주세요');
+        e.preventDefault();
+            return false;
+
+        
+      } else if (document.getElementById('pw').value.length < 6){
+        alert('7자 이상 입력해주세요');
+        e.preventDefault();
+            return false;
+
+
+      };
+    });
+
+
+    // 앞의 조건식이 참이면 else문 뒤는 아예 실행이 안됨
+    if (1 == 3) {
+      console.log('맞아요1');
+    } else if (3 == 3) {
+      console.log('맞아요2');
+    };
+
+
+    // 앞의 조건식과 상관없이 두번째 if문도 실행됨
+    if (3 == 3) {
+      console.log('맞아요1');
+    };
+    if (1 == 3) {
+      console.log('맞아요2');
+    };
+  </script>
+
+</body>
+
+</html>
