@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정규식으로 이메일형식 검증하기</title>
+
+  <!-- 부트스트랩 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+  <!-- 부트스트랩 JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+    crossorigin="anonymous"></script>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <script>
+    'abc'.includes('a')
+      // 몇번나오나, a로 끝나냐, 한글이 있냐, 영어가 있냐, 이런건 안됌
+      // -> 정규식쓰면 문자검사 가능
+
+
+      / a /.test('검사할 문자')
+      / a /.test('abcde')
+      / [a - z] /.test('abcde') 범위지정 가능 (a~z중 하나)
+      / [a - zA-Z] /.test('abcde')
+      / [ㄱ-ㅎ가-힣] /.test('abcdㅋㅋ')
+      / [0-9] /.test('abcdㅋㅋ')
+      /\S/.test('abcdㅋㅋ') 아무 문자 하나
+      /^a/.test('abcdㅋㅋ') a로 시작하는지
+      /a$/.test('abcdㅋㅋ') a로 끝나는지
+      /a|b/.test('abcdㅋㅋ') a 또는 b (or)
+      
+      /\S+@\S+\.\S+/.test('aaa@bbb.ccc') 이메일형식
+      
+  </script>
+
+
+</body>
+
+</html>

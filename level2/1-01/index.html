@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수, 사칙연산</title>
+</head>
+
+<body>
+
+  Q1. 내 나이와 출신지역을 자바스크립트 변수에 저장해봅시다.<br>
+  나이는 맨날 변하니 재할당가능한 변수,<br>
+  출신지역은 바뀌지 않으니 재할당불가능한 변수에 저장해보십시오.<br>
+  ------------------------------------------------------------<br>
+
+  Q2. 철수는 은행에 예금을 하러 갔는데 예금 금액에 따라 이율이 달라지는 것을 보고 크게 당황했습니다.<br>
+  첫 예금액이 5만원 미만이면 이율이 연 15퍼센트,<br>
+  첫 예금액이 5만원 이상이면 이율이 연 20퍼센트라고 합니다.<br>
+  그래서 민준이는<br>
+  (1) 변수에 예금액을 넣으면<br>
+  (2) 2년 후의 총 예금액을 자동으로 콘솔창에 출력해주는 기능을 자바스크립트로 만들려고하는데<br>
+  어떻게 코드를 짜면 될까요?<br>
+  --------------------------------------------------------<br>
+  Q3. 방금 마신 커피의 3분의 2만큼 총 2번 리필해주는 카페가 있습니다.<br>
+  예를 들면 처음 커피를 90ml 주문하면 첫 리필은 60ml를 해주며, 그 다음 리필은 40ml를 해주는 카페입니다.<br>
+  그럼 처음 주문한 커피 양에 따라서 최대한 마실 수 있는 커피를 콘솔창에 계산해주는 코드를 작성해봅시다.<br> <br>
+  --------------------------------------------------------<br>
+
+  Q5. 간단한 퀴즈 UI<br>
+  <br>
+  <p>태조 이성계가 태어난 년도는?</p>
+  <input type="text" id="answer">
+  <button id="send-answer">제출</button>
+
+
+
+
+
+
+  <!-- 1번 문제 -->
+  <script>
+    let 나이 = 20;
+    const 지역 = '서울';
+    console.log('나이 = ' + 나이, ', 지역 = ' + 지역);
+  </script>
+
+  <!-- 2번 문제 -->
+  <script>
+    var 예금액 = 10000;
+    var 미래예금액 = 0;
+
+    if (예금액 >= 50000) {
+      미래예금액 = 예금액 * 1.2 * 1.2
+
+    } else {
+      미래예금액 = 예금액 * 1.15 * 1.15
+    };
+
+    console.log(미래예금액)
+
+  </script>
+
+  <!-- 3번 문제 -->
+  <script>
+    var first = 360;
+    var total = 0
+
+    total = first + first * 2 / 3 + first * 2 / 3 * 2 / 3
+
+    console.log(total);
+  </script>
+
+  <script>
+    var cnt = 0 //클릭 수를 카운트
+
+    document.getElementById('send-answer').addEventListener('click', function () {
+
+      cnt = cnt + 1;
+      const inputValue = document.getElementById('answer').value
+
+      if (inputValue == 1335) {
+        alert('★정답★');
+      } else if (inputValue !== 1335 && cnt >= 3) {
+        alert('3번 이상 틀림');
+      } else {
+        alert('오답');
+      };
+
+    });
+
+  </script>
+</body>
+
+</html>
