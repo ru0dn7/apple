@@ -1,0 +1,54 @@
+.black-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  padding: 30px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: all 1s ;
+}
+
+.show-modal {
+  visibility: visible;
+  opacity: 1;
+}
+
+.white-bg {
+  background: white;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.main-bg {
+  padding: 100px 20px;
+  background: lightgray;
+}
+
+
+/* gnb */
+.list-group {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+
+
+/* slide */
+.slide-container {
+  width: 300vw;
+  transition: all 1s;
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+}
+.slide-box img {
+  width: 100%;
+}

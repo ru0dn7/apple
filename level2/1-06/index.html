@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수의 return 문법 & 소수 다루기</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- 부트스트랩 JS CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">Navbar</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <ul class="list-group">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+    <button class="btn">모달창</button>
+
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <!-- form은 서버로 유저정보 전송할때 사용, submit 누르면 action에 있는 주소로 이동 -->
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" class="form-control" id="email" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" id="pw" />
+          </div>
+          <!-- type 주의할것 -->
+          <button type="submit" class="btn btn-primary" id="send">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
+    </div>
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box"><img src="./car1-1.png" alt="" /></div>
+        <div class="slide-box"><img src="./car2-1.png" alt="" /></div>
+        <div class="slide-box"><img src="./car3-1.png" alt="" /></div>
+      </div>
+    </div>
+
+    <button class="before">이전</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">다음</button>
+
+    <br />
+    <br />
+    <br />
+    function vat(a) {<br />
+    var num = (a * 1.1).toFixed(1) ;<br />
+    return parseInt(num);<br />
+    }<br />
+    <br />
+    toFixed(1); -> 1의 자리까지 반올림, 주의! '문자'로 반환해줌 때문에
+    parseInt(); 를 사용해 숫자로 변환
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    숙제<br />
+    Q1. 함수에 분과 초를 차례로 파라미터로 입력하면 ms단위로 바꿔서 뱉어주는
+    함수를 만들어봅시다.<br />
+    <br />
+    <br />
+    Q2. 가격을 파라미터로 입력하면 10% 할인된 가격을 뱉는 함수를
+    만들어봅시다.<br />
+    <br />
+    <br />
+
+    <script>
+      <!-- 모달창 스크립트 -->
+      $(".btn").on("click", function () {
+        $(".black-bg").addClass("show-modal");
+      });
+
+      $("#close").on("click", function () {
+        $(".black-bg").removeClass("show-modal");
+      });
+
+      //  gnb
+      document
+        .querySelector(".navbar-toggler")
+        .addEventListener("click", function () {
+          document.querySelector(".list-group").classList.toggle("show");
+        });
+
+      //input값이 공백이면 알림창 띄움
+      // const inputElements = document.querySelectorAll('.form-control');
+
+      // document.querySelector('#send').addEventListener('click', function (e) {
+      //   const inputValue = inputElements[0].value.trim();
+      //   if (inputValue == '') {
+      //     e.preventDefault();
+      //     alert('아이디를 입력해주세요');
+      //   };
+      // });
+
+      //input값이 공백이면 알림창 띄움
+      $("form").on("submit", function (e) {
+        if (document.getElementById("email").value == "") {
+          alert("아이디를 입력해주세요");
+          e.preventDefault();
+          return false;
+        } else if (document.getElementById("pw").value == "") {
+          alert("비밀번호를 입력해주세요");
+          e.preventDefault();
+          return false;
+        } else if (document.getElementById("pw").value.length < 6) {
+          alert("7자 이상 입력해주세요");
+          e.preventDefault();
+          return false;
+        }
+
+        // 입력한 값이 이메일 형식인지 확인
+        var 입력값 = document.getElementById("email").value;
+        if (!/^\S+@\S+\.\S+$/.test(입력값)) {
+          alert("이메일 형식이 아님");
+          e.preventDefault();
+          return false;
+        }
+      });
+    </script>
+
+    <!-- 슬라이드 js -->
+    <script>
+      $(".slide-1").on("click", function () {
+        $(".slide-container").css("transform", "translateX(0vw)");
+      });
+
+      $(".slide-2").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-100vw)");
+      });
+
+      $(".slide-3").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-200vw)");
+      });
+
+      var 지금사진 = 1;
+
+      // next 버튼
+      $(".next").on("click", function () {
+        $(".slide-container").css(
+          "transform",
+          "translateX(-" + 지금사진 + "00vw)"
+        );
+        지금사진 += 1;
+      });
+
+      // before 버튼
+      $(".before").on("click", function () {
+        $(".slide-container").css(
+          "transform",
+          "translateX(-" + 지금사진 + "00vw)"
+        );
+        지금사진 -= 1;
+      });
+    </script>
+
+    <script>
+      function 함수() {
+        return "함수종료 기능도 갖고 있음";
+      }
+
+      var 변수 = 함수();
+      console.log(변수);
+    </script>
+
+    <!-- 가격 넣으면 부가세 남겨주는 계산기 만들기 -->
+    <script>
+      console.log('가격은 '+vat(55555));
+
+      function vat(a) {
+        var num = (a * 1.1).toFixed(1);
+        return parseInt(num);
+      }
+    </script>
+
+    <script>
+      // 숙제 1번
+      function timer(num1, num2) {
+        // return parseInt(num1 * 60) + parseInt(num2);
+        return (num1*60 + num2)*1000
+        
+      }
+
+      
+      console.log('1-1번 숙제 답 '+timer(1, 30));
+      console.log('1-2번 숙제 답 '+timer(2, 10));
+
+      // 숙제 2번
+      function 함수(a, b) {
+        if (b == true) {
+          return parseInt(a * (0.9).toFixed(2)) - 1.5;
+        } else {
+          return parseInt(a * (0.9).toFixed(2));
+        }
+      }
+
+      console.log('2-1번 숙제 답 '+함수(70, false));
+      console.log('2-2번 숙제 답 '+함수(10, true));
+    </script>
+  </body>
+</html>
