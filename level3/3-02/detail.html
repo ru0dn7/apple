@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>약간 복잡하게 생긴 Array & Object</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- 부트스트랩 JS CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="./main.css" /> -->
+
+    <style>
+      ul.list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #ccc;
+      }
+      ul.list::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .tab-button {
+        display: block;
+        padding: 10px 20px 10px 20px;
+        float: left;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        color: grey;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .orange {
+        border-top: 2px solid orange;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid white;
+        border-left: 1px solid #ccc;
+        color: black;
+        margin-top: -2px;
+      }
+      .tab-content {
+        display: none;
+        padding: 10px;
+      }
+      .show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="card p-3">
+        <span class="car-title">상품명</span> /
+        <span class="car-price">가격</span>
+      </div>
+    </div>
+
+    <div class="m-5">
+      <b>object 안에 아무거나 다 넣을수 있음 object, array도 가능</b><br />
+    
+      var car2 = { name: "아반떼", price: [60000, 3000, 4000] };
+    </div>
+
+    <script>
+      var car2 = { name: "아반떼", price: [50000, 3000, 4000] };
+      document.querySelector('.car-price').innerHTML = car2.price[0];
+
+      console.log(car2['price']);
+      
+
+    </script>
+
+    <!-- 탭기능 -->
+    <div class="container mt-5">
+      <ul class="list">
+        <li class="tab-button">Products</li>
+        <li class="tab-button orange">Information</li>
+        <li class="tab-button">Shipping</li>
+        <li class="tab-button">4번탭</li>
+        <li class="tab-button">5번탭</li>
+      </ul>
+
+      <div class="tab-content">
+        <p>상품설명입니다. Product<br />for 반복문 적용하기</p>
+      </div>
+      <div class="tab-content show">
+        <p>Array 와 Object 자료형</p>
+      </div>
+      <div class="tab-content">
+        <p>배송정보입니다. Shipping<br />for 반복문 적용하기</p>
+      </div>
+    </div>
+
+    <script src="./tab.js"></script>
+  </body>
+</html>

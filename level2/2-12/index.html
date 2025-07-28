@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수의 return 문법 & 소수 다루기</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- 부트스트랩 JS CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">Navbar</span>
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <ul class="list-group">
+      <li class="list-group-item">An item</li>
+      <li class="list-group-item">A second item</li>
+      <li class="list-group-item">A third item</li>
+      <li class="list-group-item">A fourth item</li>
+      <li class="list-group-item">And a fifth one</li>
+    </ul>
+    
+        <!-- 모달창 -->
+    <button class="btn" style="margin: 100px 0 30px;
+  border: 3px solid #000; 
+  font-size: 120%;">모달창</button>
+    <div class="black-bg">
+      <div class="white-bg">
+        <h4>로그인하세요</h4>
+        <!-- form은 서버로 유저정보 전송할때 사용, submit 누르면 action에 있는 주소로 이동 -->
+        <form action="success.html">
+          <div class="my-3">
+            <input type="text" class="form-control" id="email" />
+          </div>
+          <div class="my-3">
+            <input type="password" class="form-control" id="pw" />
+          </div>
+          <!-- type 주의할것 -->
+          <button type="submit" class="btn btn-primary" id="send">전송</button>
+          <button type="button" class="btn btn-danger" id="close">닫기</button>
+        </form>
+      </div>
+    </div>
+
+    <p style="border: 3px solid lightblue;">
+      이벤트 버블링과 이벤트관련 함수들
+      모든 브라우저는 이벤트 버블링이 일어남<br>
+      이벤트가 상위 html로 퍼지는 현상</p>
+      <p style="border: 3px solid lightblue;">
+        function(e){<br>
+          유용한 이벤트관련 함수들<br>
+          e.target; // 유저가 실제로 누른것<br>
+          e.currentTarget;  // 이벤트리스너 달린 곳<br>
+           = this;<br>
+          e.preventdefault();  //  이벤트 기본동작 막아줌<br>
+          e.stopPropagation();  // 내 상위요소로 이벤트버블링 막아줌<br>
+        };<br>
+        </p>
+
+
+
+    <!-- 슬라이드 -->
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box"><img src="./car1-1.png" alt="" /></div>
+        <div class="slide-box"><img src="./car2-1.png" alt="" /></div>
+        <div class="slide-box"><img src="./car3-1.png" alt="" /></div>
+      </div>
+    </div>
+
+    <button class="before">이전</button>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <button class="next">다음</button>
+
+
+    <script>
+      // <!-- 모달창 스크립트 -->
+      $(".btn").on("click", function () {
+        $(".black-bg").addClass("show-modal");
+      });
+
+      $("#close").on("click", function () {
+        $(".black-bg").removeClass("show-modal");
+      });
+
+      // 검은배경 눌러 모달창 닫기
+      document.querySelector('.black-bg').addEventListener('click',function(e){
+
+        console.log(e.target);
+        console.log(document.querySelector('.black-bg'));
+        console.log($('.black-bg')); // jquery는 다르니 주의
+        
+        
+        // 내가 실제로 누른게 == 까만배경 일때만 닫기 라는 조건 넣어주면 된다
+        // e.target == black-bg
+        if(e.target == document.querySelector('.black-bg')){
+          document.querySelector('.black-bg').classList.remove('show-modal');          
+        };
+      });
+
+      //  gnb
+      document
+        .querySelector(".navbar-toggler")
+        .addEventListener("click", function () {
+          document.querySelector(".list-group").classList.toggle("show");
+        });
+
+      //input값이 공백이면 알림창 띄움
+      // const inputElements = document.querySelectorAll('.form-control');
+
+      // document.querySelector('#send').addEventListener('click', function (e) {
+      //   const inputValue = inputElements[0].value.trim();
+      //   if (inputValue == '') {
+      //     e.preventDefault();
+      //     alert('아이디를 입력해주세요');
+      //   };
+      // });
+
+      //input값이 공백이면 알림창 띄움
+      $("form").on("submit", function (e) {
+        if (document.getElementById("email").value == "") {
+          alert("아이디를 입력해주세요");
+          e.preventDefault();
+          return false;
+        } else if (document.getElementById("pw").value == "") {
+          alert("비밀번호를 입력해주세요");
+          e.preventDefault();
+          return false;
+        } else if (document.getElementById("pw").value.length < 6) {
+          alert("7자 이상 입력해주세요");
+          e.preventDefault();
+          return false;
+        }
+
+        // 입력한 값이 이메일 형식인지 확인
+        var 입력값 = document.getElementById("email").value;
+        if (!/^\S+@\S+\.\S+$/.test(입력값)) {
+          alert("이메일 형식이 아님");
+          e.preventDefault();
+          return false;
+        }
+      });
+    </script>
+
+    <!-- 슬라이드 js -->
+    <script>
+      $(".slide-1").on("click", function () {
+        $(".slide-container").css("transform", "translateX(0vw)");
+      });
+
+      $(".slide-2").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-100vw)");
+      });
+
+      $(".slide-3").on("click", function () {
+        $(".slide-container").css("transform", "translateX(-200vw)");
+      });
+
+      var 지금사진 = 1;
+
+      // next 버튼
+      $(".next").on("click", function () {
+        $(".slide-container").css(
+          "transform",
+          "translateX(-" + 지금사진 + "00vw)"
+        );
+        지금사진 += 1;
+      });
+
+      // before 버튼
+      $(".before").on("click", function () {
+        $(".slide-container").css(
+          "transform",
+          "translateX(-" + 지금사진 + "00vw)"
+        );
+        지금사진 -= 1;
+      });
+    </script>
+
+  </body>
+</html>

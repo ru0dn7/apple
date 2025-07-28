@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array, for 반복문 실력향상 과제</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- 부트스트랩 JS CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="m-5">
+      <b> Q. Array에서 철수라는 자료를 찾고 싶습니다</b><br />
+      array에서 이름을 찾아주는 함수를 만들고 있습니다.<br />
+
+      함수 안에 파라미터로 이름을 집어넣으면<br />
+
+      그 이름이 출석부에 있으면 콘솔창에 출력해주는 함수를 만들어봅시다. <br />
+
+      어떻게 만들면 될까요?
+    </div>
+
+    <script>
+      var 출석부 = ["흥민", "영희", "철수", "재석", "철수"];
+
+      function 이름찾기(name) {
+        for (let i = 0; i < 출석부.length; i++) {
+          if (name == 출석부[i]) {
+            console.log("있어요");
+            return false;
+          }
+        }
+      }
+      이름찾기("철수");
+    </script>
+
+    <div class="m-5">
+      <b>Q. 갑자기 구구단을 콘솔창에 출력하고 싶습니다.</b><br />
+      철수는 구구단을 외우지 못하는 관계로<br />
+
+      자바스크립트를 이용해 구구단을 2단부터 9단까지 콘솔창에 출력하고
+      싶어졌습니다.<br />
+
+      빨리 출력해보십시오. <br />
+    </div>
+
+    <!-- // 출력이 너무 많아서 주석 -->
+    <!-- <script>
+      for (let k = 2; k < 10; k++) {
+        for (let i = 1; i < 10; i++) {
+          console.log(`${k}x${i} = ${k * i}`);
+        }
+      }
+    </script> -->
+
+    <div class="m-5">
+      <b>Q. 평균점수 계산기 만들기 </b>
+      <br />
+      어떤 함수에 <br />
+
+      기존 모의고사 성적들을 array 자료에 전부 담아 첫 파라미터로 입력하고
+      <br />
+
+      이번 11월 모의고사 성적을 둘 째 파라미터로 입력하면 <br />
+
+      11월 성적이 기존 성적들의 평균에 비해 얼마나 우수한지 결과를 알려주고
+      싶습니다. <br />
+
+      어떻게 함수를 만들면 될까요?<br />
+      <br />
+      <br />
+
+      동작예시 :<br />
+
+      함수([10, 20, 30, 40, 50], 40) 이렇게 쓰면 콘솔창에 "평균보다 10점이
+      올랐네요"가 떠야합니다. (평균이 30이니까)<br />
+
+      함수([40, 40, 40], 20) 이렇게 쓰면 콘솔창에 "평균보다 20점이 떨어졌네요
+      재수추천"이 떠야합니다. (평균이 40이니까)<br />
+    </div>
+
+    <script>
+      function 평균계산기(arr, b){
+        var result = 0;        
+
+        for(let i =0; i< arr.length; i++){
+          result = result + arr[i];
+        }
+
+
+        if(result / arr.length < b){
+          console.log(`${b - result/arr.length}점 올랐어용`);
+        } else {
+          console.log('같거나 떨어졌어용');
+
+        };
+      };
+
+      평균계산기([10,20,30,40,50], 40);
+
+    </script>
+
+  </body>
+</html>

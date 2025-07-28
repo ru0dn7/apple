@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>탭기능 만들며 배우는 for 반복문</title>
+    <title>이벤트 버블링과 이벤트관련 함수들</title>
 
     <!-- 부트스트랩 CSS CDN -->
     <link
@@ -46,8 +46,11 @@
       <li class="list-group-item">A fourth item</li>
       <li class="list-group-item">And a fifth one</li>
     </ul>
-    <button class="btn">모달창</button>
-
+    
+        <!-- 모달창 -->
+    <button class="btn" style="margin: 100px 0 30px;
+  border: 3px solid #000; 
+  font-size: 120%;">모달창</button>
     <div class="black-bg">
       <div class="white-bg">
         <h4>로그인하세요</h4>
@@ -65,6 +68,25 @@
         </form>
       </div>
     </div>
+
+    <p style="border: 3px solid lightblue;">
+      이벤트 버블링과 이벤트관련 함수들
+      모든 브라우저는 이벤트 버블링이 일어남<br>
+      이벤트가 상위 html로 퍼지는 현상</p>
+      <p style="border: 3px solid lightblue;">
+        function(e){<br>
+          유용한 이벤트관련 함수들<br>
+          e.target; // 유저가 실제로 누른것<br>
+          e.currentTarget;  // 이벤트리스너 달린 곳<br>
+           = this;<br>
+          e.preventdefault();  //  이벤트 기본동작 막아줌<br>
+          e.stopPropagation();  // 내 상위요소로 이벤트버블링 막아줌<br>
+        };<br>
+        </p>
+
+
+
+    <!-- 슬라이드 -->
     <div style="overflow: hidden">
       <div class="slide-container">
         <div class="slide-box"><img src="./car1-1.png" alt="" /></div>
@@ -79,48 +101,30 @@
     <button class="slide-3">3</button>
     <button class="next">다음</button>
 
-    <br />
-    <br />
-    <br />
-    <div>
-      window.addEventListener('scroll',function(){<br />
-      console.log('스크롤 동작 감지됨!!');<br />
-      console.log(window.scrollY); // 얼마나 스크롤바를 내렸는지 감지<br />
-      window.scrollTo(0,100); x,y 축으로 스크롤 강제이동 window.scrollBy(0,100);
-      현재위치에서 x,y 만큼 스크롤 강제이동
-      <br />
 
-      });<br />
-      <br /><br />
-      // jquery 방식<br />
-      $(window).on('scroll', function(){<br />
-      $(window).scrollTop(); // 현재 스크롤바 위치 출력<br />
-      });<br />
-    </div>
-    <br /><br />
-    문제 1. 스크롤바를 100px 내리면 로고 폰트사이즈를 작게 만들어오십시오.<br />
-
-    반대로 100px 미만으로 내리면 로고 폰트사이즈를 크게 만들어옵시다. <br />
-    <br /><br />
-    문제 2. 회원약관 박스를 거의 끝까지 스크롤하면 alert를 띄워줍시다.<br />
-    <br />
-    <br />
-
-    <div style="height: 1000px"><!-- 아무것도 아님 높이 잡기용 --></div>
-    <div class="lorem" style="width: 200px; height: 100px; overflow-y: scroll">
-      회원약관 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
-      voluptas voluptatum minus praesentium fugit debitis at, laborum ipsa
-      itaque placeat sit, excepturi eius. Nostrum perspiciatis, eligendi quae
-      consectetur praesentium exercitationem.
-    </div>
     <script>
-      <!-- 모달창 스크립트 -->
+      // <!-- 모달창 스크립트 -->
       $(".btn").on("click", function () {
         $(".black-bg").addClass("show-modal");
       });
 
       $("#close").on("click", function () {
         $(".black-bg").removeClass("show-modal");
+      });
+
+      // 검은배경 눌러 모달창 닫기
+      document.querySelector('.black-bg').addEventListener('click',function(e){
+
+        console.log(e.target);
+        console.log(document.querySelector('.black-bg'));
+        console.log($('.black-bg')); // jquery는 다르니 주의
+        
+        
+        // 내가 실제로 누른게 == 까만배경 일때만 닫기 라는 조건 넣어주면 된다
+        // e.target == black-bg
+        if(e.target == document.querySelector('.black-bg')){
+          document.querySelector('.black-bg').classList.remove('show-modal');          
+        };
       });
 
       //  gnb
@@ -202,79 +206,5 @@
       });
     </script>
 
-    <script>
-      function 함수() {
-        return "함수종료 기능도 갖고 있음";
-      }
-
-      var 변수 = 함수();
-      console.log(변수);
-    </script>
-
-    <!-- 가격 넣으면 부가세 남겨주는 계산기 만들기 -->
-    <script>
-      console.log("가격은 " + vat(55555));
-
-      function vat(a) {
-        var num = (a * 1.1).toFixed(1);
-        return parseInt(num);
-      }
-    </script>
-
-    <script>
-      // 숙제 1번
-      function timer(num1, num2) {
-        // return parseInt(num1 * 60) + parseInt(num2);
-        return (num1 * 60 + num2) * 1000;
-      }
-
-      console.log("1-1번 숙제 답 " + timer(1, 30));
-      console.log("1-2번 숙제 답 " + timer(2, 10));
-
-      // 숙제 2번
-      function 함수(a, b) {
-        if (b == true) {
-          return parseInt(a * (0.9).toFixed(2)) - 1.5;
-        } else {
-          return parseInt(a * (0.9).toFixed(2));
-        }
-      }
-
-      console.log("2-1번 숙제 답 " + 함수(70, false));
-      console.log("2-2번 숙제 답 " + 함수(10, true));
-    </script>
-
-    <script>
-      window.addEventListener("scroll", function () {
-        console.log("스크롤 동작 감지됨!!");
-        console.log(window.scrollY); // 얼마나 스크롤바를 내렸는지 감지
-      });
-    </script>
-
-    숙제
-    <script>
-      //숙제1
-      window.addEventListener("scroll", function () {
-        if (window.scrollY <= 100) {
-          console.log("100 넘었음");
-          document.querySelector(".navbar-brand").style.fontSize = "15px";
-        } else {
-          document.querySelector(".navbar-brand").style.fontSize = "30px";
-        }
-      });
-
-      // 숙제2
-      // hint div의 스크롤바 내린 양 + 눈에 보이는 div높이 == div의 실제 높이
-      document.querySelector(".lorem").addEventListener;
-      $(".lorem").on("scroll", function () {
-        var 스크롤양 = document.querySelector(".lorem").scrollTop;
-        var 실제높이 = document.querySelector(".lorem").scrollHeight;
-        var 높이 = document.querySelector(".lorem").clientHeight;
-
-        if (스크롤양 + 높이 == 실제높이) {
-          alert("끝까지 읽었음");
-        }
-      });
-    </script>
   </body>
 </html>
