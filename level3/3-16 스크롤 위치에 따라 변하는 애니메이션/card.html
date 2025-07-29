@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./card.css" />
+  </head>
+  <body>
+    <div class="card-background">
+      <div class="card-box">
+        <img src="./card1-1.png" alt="" />
+      </div>
+      <div class="card-box">
+        <img src="./card2-1.png" alt="" />
+      </div>
+      <div class="card-box">
+        <img src="./card3-1.png" alt="" />
+      </div>
+    </div>
+
+    <!-- 카드 슬라이드 js -->
+    <!-- <script>
+      $(window).scroll(function () {
+        var 높이 = $(window).scrollTop();
+        console.log(높이);
+
+        var y = (-1 / 500) * 높이 + 115 / 50;
+        var z = (-1 / 5000) * 높이 + 565 / 500;
+
+        $(".card-box").eq(0).css("opacity", y);
+        $(".card-box").eq(0).css("transform", `scale(${z})`);
+      });
+    </script> -->
+
+    <script>
+      $(window).scroll(function () {
+        const scroll = $(window).scrollTop();
+        const lastIndex = $(".card-box").length - 1;
+
+        $(".card-box").each(function (i) {
+          if (i === lastIndex) {
+            // 마지막 카드는 항상 보이게
+            $(this).css({
+              opacity: 1,
+              transform: "scale(1)",
+            });
+            return; // 이후 계산 생략
+          }
+
+          const 기준점 = 800 + i * 600;
+          const 범위 = 600;
+          const progress = (scroll - 기준점) / 범위;
+
+          let opacity = 1 - progress;
+          let scale = 1 - progress * 0.1;
+
+          // 값 제한
+          if (opacity < 0) opacity = 0;
+          if (opacity > 1) opacity = 1;
+          if (scale < 0.9) scale = 0.9;
+          if (scale > 1) scale = 1;
+
+          $(this).css({
+            opacity: opacity,
+            transform: `scale(${scale})`,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax 2 : 상품 더보기 버튼 만들기</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- 부트스트랩 JS CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="./main.css" /> -->
+  </head>
+  <body>
+    <div class="container my-2">
+      숙제 - 더보기 2번 누르면 상품3개 더 가져와 출력하기
+    </div>
+    <div class="container">
+      <div class="row"></div>
+    </div>
+    <!-- 자바스크립트로 html생성해서 상품목록 3개 만들고 데이터 바인딩 -->
+    <script>
+      var products = [
+        { id: 0, price: 70000, title: "Blossom Dress" },
+        { id: 1, price: 50000, title: "Springfield Shirt" },
+        { id: 2, price: 60000, title: "Black Monastery" },
+      ];
+
+      products.forEach((a, i) => {
+        $(".row").append(`<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`);
+      });
+    </script>
+
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+
+    <!-- 더보기 누르면 상품3개 가져와 출력하기 -->
+    <script>
+      $("#more").click(function () {});
+    </script>
+
+    <!-- 숙제 - 더보기 2번 누르면 상품3개 더 가져와 출력하기 -->
+    <script>
+      var cnt = 1;
+
+      document.querySelector("#more").addEventListener("click", function () {
+        console.log(cnt);
+
+        if ((cnt == 1)) {
+          $.get("https://codingapple1.github.io/js/more1.json").done((data) => {
+            cnt++;
+            data.forEach((a, i) => {
+              $(".row").append(`<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`);
+            });
+          });
+        } else if ((cnt == 2)) {
+          $.get("https://codingapple1.github.io/js/more2.json").done((data) => {
+            cnt++;
+
+            data.forEach((a, i) => {
+              $(".row").append(`<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`);
+            });
+          });
+          document.querySelector("#more").style.display = 'none';
+        } 
+      });
+    </script>
+
+    <!-- ajax로 get 요청하는법 -->
+    <script>
+      // $.get('요청 할 주소').done(function(){}) // done -> 받아오기 성공시 함수실행, fail -> 실패시 실행
+      $.get("https://codingapple1.github.io/price.json")
+        .done(function (data) {
+          // console.log(`오늘의 가격 ${data.price}`);
+        })
+        .fail(function () {
+          console.log(" 실패함");
+        });
+    </script>
+  </body>
+</html>

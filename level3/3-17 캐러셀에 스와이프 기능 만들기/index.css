@@ -1,0 +1,15 @@
+/* slide */
+.slide-container {
+  width: 300vw;
+}
+
+.slide-box {
+  width: 100vw;
+  float: left;
+
+  display: flex;
+  justify-content: center;
+}
+.slide-box img {
+  /* width: 100%; */
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array에 자주 쓰는 sort, map, filter 함수</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+
+    <!-- 부트스트랩 JS CDN -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="./main.css" /> -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row"></div>
+    </div>
+
+    <div class="container">
+      <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+
+    <!-- 더보기 누르면 상품3개씩 가져와 출력하기 -->
+    <script>
+      var cnt = 1;
+
+      document.querySelector("#more").addEventListener("click", function () {
+        console.log(cnt);
+
+        if (cnt == 1) {
+          $.get("https://codingapple1.github.io/js/more1.json").done((data) => {
+            cnt++;
+            data.forEach((a, i) => {
+              $(".row").append(`<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`);
+            });
+          });
+        } else if (cnt == 2) {
+          $.get("https://codingapple1.github.io/js/more2.json").done((data) => {
+            cnt++;
+
+            data.forEach((a, i) => {
+              $(".row").append(`<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`);
+            });
+          });
+          document.querySelector("#more").style.display = "none";
+        }
+      });
+    </script>
+
+    <div class="container my-3">
+      <button class="btn btn-danger" id="price">가격순정렬</button>
+    </div>
+
+    <!-- 자바스크립트로 html생성해서 상품목록 3개 만들고 데이터 바인딩 -->
+    <script>
+      var products = [
+        { id: 0, price: 70000, title: "Blossom Dress" },
+        { id: 1, price: 50000, title: "Springfield Shirt" },
+        { id: 2, price: 60000, title: "Black Monastery" },
+      ];
+      products.forEach((a, i) => {
+        var 템플릿 = `<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`;
+
+        $(".row").append(템플릿);
+      });
+    </script>
+
+    <!-- 가격순정렬 -->
+    <script>
+      document.querySelector("#price").addEventListener("click", function () {
+        products.sort(function (a, b) {
+          return a.price - b.price;
+        });
+
+        $(".row").html("");
+
+        products.forEach((a, i) => {
+          var 템플릿 = `<div class="col-sm-4">
+          <img src="https://placehold.co/600" class="w-100" />
+          <h5>${a.title}</h5>
+          <p>가격 : ${a.price}</p>
+          </div>`;
+
+          $(".row").append(템플릿);
+        });
+      });
+    </script>
+
+    <!-- array와 sort 설명 -->
+    <script>
+      var 어레이 = [7, 3, 5, 2, 40];
+      var 어레이2 = ["a", "c", "b"];
+
+      어레이2.sort();
+      // console.log(어레이2);
+
+      // sort는 문자순으로 정렬이기 때문에 추가로 콜백함수 넣어줘야함
+      // a,b 는 array 안의 자료, return 값이 양수면(a-b) 오름차순, 음수면(b-a) 내림차순
+      어레이.sort(function (a, b) {
+        return a - b;
+      });
+      // console.log(어레이);
+
+      // array 자료중 원하는것만 필터 ex)6만원 이하 상품만 보여주기 
+      //  filter() 결과는 변수에 저장해서 써야함
+      var 새어레이 = 어레이.filter(function (a) {
+        return a < 4;
+      });
+      console.log(새어레이);
+
+      // array 자료 전부 변형하려면 .map()  / ex)달러가격을 원화가격으로 변경 
+      var 새어레이 = 어레이.map(function (a) {
+        return a * 4;
+      });
+      console.log(새어레이);
+    </script>
+  </body>
+</html>
