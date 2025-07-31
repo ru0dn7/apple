@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div style="overflow: hidden">
+      <div class="slide-container">
+        <div class="slide-box">
+          <img src="card1-1.png" draggable="false"/>
+        </div>
+        <div class="slide-box">
+          <img src="card2-1.png"  draggable="false"/>
+        </div>
+        <div class="slide-box">
+          <img src="card3-1.png"  draggable="false"/>
+        </div>
+      </div>
+    </div>
+    <div>
+      <b>알아야 할 이벤트들</b><br>
+      mousedown - 눌렀을때<br>
+      mouseup - 뗐을때<br>
+      mousemove - 움직일때<br>
+      e.clientX - 좌표
+    </div>
+
+
+
+
+
+    <script>
+      var 시작좌표 = 0;
+      var 눌렀냐 = false;
+
+      $('.slide-box').eq(0).on('mousedown',function(e){
+        시작좌표 = e.clientX;      
+        눌렀냐 = true;
+      });
+
+      $('.slide-box').eq(0).on('mousemove',function(e){
+        if(눌렀냐 == true){
+          $('.slide-container').css('transform',`translateX(${ e.clientX - 시작좌표}px)`)          
+        };        
+      });
+
+      $('.slide-box').eq(0).on('mouseup',function(){
+        눌렀냐 = false;
+      });
+
+    </script>
+  </body>
+</html>

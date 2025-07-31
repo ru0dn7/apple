@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹개발 기능대회 예제</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>웹개발 기능대회 예제</title>
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
 
-  <link rel="stylesheet" href="./reset.css">
-  <link rel="stylesheet" href="./test.css">
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./test.css" />
+  </head>
 
-</head>
+  <body>
+    <header>
+      <div class="header_inner">
+        <h1 class="logo"><a href="./test.html">집꾸미기</a></h1>
+        <nav>
+          <ul>
+            <li class="on"><a href="">Home</a></li>
+            <li><a href="#none">스토어</a></li>
+            <li><a href="#none">시공견적</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-<body>
-  <header>
-    <div class="header_inner">
-      <h1 class="logo"><a href="./test.html">집꾸미기</a></h1>
-      <nav>
-        <ul>
-          <li class="on"><a href="">Home</a></li>
-          <li><a href="#none">스토어</a></li>
-          <li><a href="#none">시공견적</a></li>
+    <main>
+      <section>
+        <input class="search" type="text" placeholder="검색어 입력" /> <button onclick="clearInput()">✖</button>
+        <ul class="list_wrap">
+          <!-- json데이터 -->
         </ul>
-      </nav>
+      </section>
+
+      <section>
+        장바구니
+        <div class="cart">
+          여기로 드래그
+          <ul class="cart_list">
+            <!-- 여기에 상품 li들이 들어감 -->
+            
+          </ul>
+        </div>
+      </section>
+      <div class="total_price">
+        최종가격
+        <br /><br />
+        <p>합계 : <span>0</span>원</p>
+        <br /><br />
+        <button class="buy">구매하기</button>
+      </div>
+    </main>
+
+    <div class="modal_bg">
+      <div class="modal">
+        성함
+        <input type="text" />
+        연락처
+        <input type="text" />
+
+        <div class="btn_box">
+          <button class="info">입력완료</button>
+          <button class="close">닫기</button>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main>
-    <section>
-      <div>검색어 입력 창</div>
-      <ul class="list_wrap">
-        <li>
-          <img src="./pr1.JPG" alt="식기세척기">
-          <ul>
-            <li class="title">식기세척기</li>
-            <li class="made">세척나라</li>
-            <li class="price">가격 : 10000</li>
-          </ul>
-          <button>담기</button>
-        </li>
-        <li>
-          <img src="./pr2.JPG" alt="식기세척기">
-          <ul>
-            <li class="title">식기세척기</li>
-            <li class="made">세척나라</li>
-            <li class="price">가격 : 10000</li>
-          </ul>
-          <button>담기</button>
-        </li>
-        <li>
-          <img src="./pr3.JPG" alt="식기세척기">
-          <ul>
-            <li class="title">식기세척기</li>
-            <li class="made">세척나라</li>
-            <li class="price">가격 : 10000</li>
-          </ul>
-          <button>담기</button>
-        </li>
-        <li>
-          <img src="./pr4.JPG" alt="식기세척기">
-          <ul>
-            <li class="title">식기세척기</li>
-            <li class="made">세척나라</li>
-            <li class="price">가격 : 10000</li>
-          </ul>
-          <button>담기</button>
-        </li>
-      </ul>
-    </section>
+    <div class="bill">
+      <canvas id="canvas" width="350" height="350"> </canvas>
+      <button class="close">닫기</button>
+    </div>
 
-
-    <section>
-      장바구니
-      <div class="cart">여기로 드래그</div>
-    </section>
-    <div>최종가격</div>
-  </main>
-
-</body>
-
+    <script src="./test.js"></script>
+  </body>
 </html>

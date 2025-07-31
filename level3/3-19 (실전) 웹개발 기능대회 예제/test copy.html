@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>웹개발 기능대회 예제</title>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./test.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header_inner">
+        <h1 class="logo"><a href="./test.html">집꾸미기</a></h1>
+        <nav>
+          <ul>
+            <li class="on"><a href="">Home</a></li>
+            <li><a href="#none">스토어</a></li>
+            <li><a href="#none">시공견적</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <input class="search" type="text" placeholder="검색어 입력" />
+        <ul class="list_wrap">
+          <!-- json데이터 -->
+        </ul>
+      </section>
+
+      <section>
+        장바구니
+        <div class="cart">여기로 드래그</div>
+      </section>
+      <div class="total_price">
+        최종가격
+        <br /><br />
+        <p>합계 : <span>70,000</span>원</p>
+        <br /><br />
+        <button class="buy">구매하기</button>
+      </div>
+    </main>
+
+    <div class="modal_bg">
+      <div class="modal">
+        성함
+        <input type="text" />
+        연락처
+        <input type="text" />
+
+        <div class="btn_box">
+          <button>입력완료</button>
+          <button>닫기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bill">
+      <canvas id="canvas" width="350" height="350"> </canvas>
+      <button>닫기</button>
+    </div>
+
+    <!-- ------------------------------------------------------------ -->
+    <!-- // 상품 목록(JSON) 불러와 출력 -->
+    <script>
+      let productData = [];
+
+      $.getJSON("./store.json", function (data) {
+        let alltHTML = "";
+        productData = data.products;
+
+        function renderList(data){
+
+        
+        data.products.forEach((products) => {
+          alltHTML += `
+                <li>
+                  <img src="./${products.photo}" alt="${products.title}" />
+                  <ul>
+                    <li class="title">${products.title}</li>
+                    <li class="made">${products.brand}</li>
+                    <li class="price">가격 : ${products.price}</li>
+                  </ul>
+                  <button>담기</button>
+                </li>`;
+        });
+        renderList();
+
+};
+
+        $(".list_wrap").append(alltHTML);
+      });
+    </script>
+
+    <!-- 검색기능 js -->
+    <script>
+      $(".search").on("input", function () {
+        let keyword = $(this).val().toLowerCase(); //대소문자 구분 없도록
+        let result = productData.filter((item) =>
+          item.title.toLowerCase().includes(keyword)
+        );
+
+        
+      });
+      renderList(result);
+      </script>
+
+    <!-- 영수증출력 js -->
+    <script>
+      var canvas = document.querySelector("#canvas");
+      var c = canvas.getContext("2d");
+
+      c.font = "20px dotum";
+      c.fillText("영수증", 30, 20);
+      c.fillText("날짜", 30, 50);
+      c.fillText("제품명", 30, 100);
+    </script>
+  </body>
+</html>
