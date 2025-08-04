@@ -1,0 +1,25 @@
+.profile {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+#special {font-weight: 800;}
+
+.box {
+  width: 100px;
+   background: cadetblue;
+   margin: 10px;
+   padding: 40px;
+   border-radius: 15px;
+   margin: 0 auto;
+   box-shadow: 4px 4px 4px 0;
+  }

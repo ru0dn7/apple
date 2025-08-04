@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>레이아웃 만들기 3 : 편리한 Flexbox</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+
+
+    
+    <div class="cart-bg">
+      <h3>Your Shopping Cart</h3>
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td><img src="./img/item1.png" alt="" /></td>
+          <td>카메라</td>
+          <td>1</td>
+          <td>7000</td>
+          <td>7000</td>
+
+          <tr>
+            <td colspan="5" style="text-align: right">총가격 : 7000</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn">구매하기</button>
+      <a href="#none" class="custom-link">링크</a>
+    </div>
+
+    <div>
+      <button class="main-btn bg-red">더 알아보기</button>
+      <button class="main-btn bg-blue">구매하기</button>
+    </div>
+
+
+    <!-- BEM(Block Element Modifier) 방식 클래스명 작명 -->
+     <!-- class="이름__역할--세부특징" -->
+    <div class="profile">
+      <img src="" alt="" class="profile__img">
+      <h4 class="profile_title"></h4>
+      <p class="profile_content"></p>
+      <button class="profile__button--red">버튼1</button>
+      <button class="profile__button--blue">버튼2</button>
+    </div>
+  </body>
+</html>
