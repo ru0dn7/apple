@@ -1,0 +1,11 @@
+.pseudo::first-line {
+  color: red;
+  font-size: 30px;
+}
+
+.input-file::file-selector-button {
+  background: skyblue;
+  border: none;
+  padding: 20px;
+}
+.input-file::file-selector-button:hover {background: blue;}

@@ -1,0 +1,49 @@
+@use 'reset';
+$main-color: #2a4cb2;
+$sub-color: #fff;
+
+.bg {
+  background: $main-color;
+  color: $sub-color;
+}
+
+// % ->임시클래스, 단독 컴파일 되지 않음
+%set {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+.test-red {
+  @extend %set;
+  color: red;
+}
+.test-green {
+  @extend %set;
+  color: green;
+}
+.test-blue {
+  @extend %set;
+  color: blue;
+}
+
+
+
+@mixin 폰트스타일($구멍) {
+  font-size: $구멍;
+  letter-spacing: -1px;
+}
+
+h2 {
+  @include 폰트스타일(30px);
+  color: reset.$메인칼라;
+  //파일명.변수 로 사용
+}
+h3 {
+  @include 폰트스타일(20px);
+}
+h4 {
+  font-size: 10px;
+  letter-spacing: -1px;
+}
+
+

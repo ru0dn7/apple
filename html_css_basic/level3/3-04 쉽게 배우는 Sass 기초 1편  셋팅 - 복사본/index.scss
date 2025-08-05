@@ -1,0 +1,39 @@
+$main-color: #2a4cb2;
+$sub-color: #fff;
+
+.main-bg {
+  width: 100px;
+  h4 {
+    font-size: 16px;
+  }
+  button {
+    color: red;
+  }
+}
+
+// % ->임시클래스, 단독 컴파일 되지 않음
+%set {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+.test-red {
+  @extend %set;
+  color: red;
+}
+.test-green {
+  @extend %set;
+  color: green;
+}
+.test-blue {
+  @extend %set;
+  color: blue;
+}
+
+
+.bg {
+  background: $main-color;
+  color: $sub-color;
+}
+
+

@@ -1,0 +1,32 @@
+.main-bg {
+  width: 100px;
+}
+.main-bg h4 {
+  font-size: 16px;
+}
+.main-bg button {
+  color: red;
+}
+
+.test-blue, .test-green, .test-red {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+}
+
+.test-red {
+  color: red;
+}
+
+.test-green {
+  color: green;
+}
+
+.test-blue {
+  color: blue;
+}
+
+.bg {
+  background: #2a4cb2;
+  color: #fff;
+}/*# sourceMappingURL=index.css.map */
