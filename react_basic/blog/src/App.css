@@ -1,0 +1,28 @@
+div {
+  box-sizing: border-box;
+}
+
+.App {
+  text-align: center;
+}
+
+.black-nav {
+  background: black;
+  width: 100%;
+  display: flex;
+  color: white;
+  padding: 20px;
+}
+
+.list {
+  text-align: left;
+  padding-left: 20px;
+  border-bottom: 1px solid grey;
+}
+
+.modal {
+  padding-top: 20px;
+  padding: 20px;
+  background: #eee;
+  text-align: left;
+}
