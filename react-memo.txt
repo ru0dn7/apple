@@ -24,13 +24,18 @@ Part 2 : 쇼핑몰 프로젝트 -> react_basic/shop
   - 3. 코드 길어지면 import export 하면 됩니다
   - 4. 저번시간 숙제 해설 (Card 컴포넌트 만들기)
   - 5. 리액트 라우터 1 : 셋팅이랑 기본 라우팅
-
   - 6.리액트 라우터 2 : navigate, nested routes, outlet
- 
-  - 7. 
-  - 8. 
-  - 9. 
-  - 10. 
+  - 7. 리액트 라우터 3 : URL 파라미터로 상세페이지 100개 만들기
+  - 8. styled-components
+  - 9. Lifecycle과 useEffect 1
+  - 10. Lifecycle과 useEffect 2
+  - 11. 리액트에서 서버와 통신하려면 ajax 1
+  - 12. 리액트에서 서버와 통신하려면 ajax 2 : post, fetch
+  - 13. 리액트에서 탭 UI 만들기
+
+  - 14. 멋있게 전환 애니메이션 주는 법 (transition)
+  - 15. 
+
 
 
 
