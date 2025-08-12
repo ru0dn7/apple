@@ -40,3 +40,13 @@
     transform: rotate(360deg);
   }
 }
+
+.start {
+  opacity: 0;
+  transition: all 1.5s;
+}
+
+.end {
+  opacity: 1
+  ;
+}

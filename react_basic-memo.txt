@@ -32,9 +32,31 @@ Part 2 : 쇼핑몰 프로젝트 -> react_basic/shop
   - 11. 리액트에서 서버와 통신하려면 ajax 1
   - 12. 리액트에서 서버와 통신하려면 ajax 2 : post, fetch
   - 13. 리액트에서 탭 UI 만들기
-
   - 14. 멋있게 전환 애니메이션 주는 법 (transition)
-  - 15. 
+  - 15. props 싫으면 Context API 써도 됩니다
+  - 16. 장바구니 페이지 만들기 & Redux 1 : Redux Toolkit 설치
+  - 17. Redux 2 : store에 state 보관하고 쓰는 법
+  - 18. Redux 3 : store의 state 변경하는 법
+  - 19. Redux 4 : state가 object/array일 경우 변경하는 법
+  - 20. Redux 5 : 장바구니 기능 만들기 숙제 & 응용문제
+  - 21. 리액트에서 자주쓰는 if문 작성패턴 5개
+  - 22. localStorage로 만드는 최근 본 상품 기능 1
+  - 23. localStorage로 만드는 최근 본 상품 기능 2
+  - 24. 실시간 데이터가 중요하면 react-query
+
+
+
+  - 25. 성능개선 1 : 개발자도구 & lazy import
+
+
+
+  - 26. 
+  - 27. 
+  - 28. 
+  - 29. 
+  - 30. 
+  - 31. 
+  - 32. 
 
 
 

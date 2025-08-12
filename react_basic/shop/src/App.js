@@ -1,38 +1,56 @@
+/* eslint-disable */
+
 import "./App.css";
-import { useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail.js";
 import axios from "axios";
+import Cart from "./routes/Cart.js";
+import { useQuery } from "react-query";
 
 function App() {
   let [shoes, setShoes] = useState(data); // json 데이터
   let [clickCount, setClickCount] = useState(0); // 더보기 cnt
   let [loading, setLoading] = useState(false); // 로딩 상태
+  let [재고] = useState([10, 11, 12]);
 
   let navigate = useNavigate();
+
+  let result = useQuery("작명", () =>
+    axios.get("https://codingapple1.github.io/userdata.json").then((a) => {
+      return a.data;
+    })
+  );
 
   return (
     <div className="App">
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">ShoesShop</Navbar.Brand>
+          <Navbar.Brand href="/">ShoesShop</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link
               onClick={() => {
-                navigate("/");
-              }}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/detail");
+                navigate("/detail/0");
               }}
             >
               Detail
             </Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </Nav.Link>
+          </Nav>
+          <Nav className="ms-auto ">
+            <div>
+              {result.isLoading && "로딩중"}
+              {result.error && "에러남"}
+              {result.data && result.data.name}
+            </div>
           </Nav>
         </Container>
       </Navbar>
@@ -85,7 +103,7 @@ function App() {
                           // setLoading(false); // 로딩 끝
 
                           setLoading(false);
-                        }, 2000);
+                        }, 1000);
                       })
                       .catch(() => {
                         console.log("데이터를 불러오는 중 오류 발생");
@@ -101,6 +119,10 @@ function App() {
         />
         {/* 상세페이지 */}
         <Route path="detail/:id" element={<Detail shoes={shoes} />} />
+
+        {/* 장바구니 페이지 */}
+        <Route path="/cart" element={<Cart />} />
+
         {/* about 페이지 */}
         <Route path="about" element={<About />}>
           <Route path="member" element={<div>멤버 입니다</div>} />
