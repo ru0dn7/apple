@@ -3,6 +3,8 @@ import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changeName, increase } from "./../store/userSlice.js";
 import { addCount } from "./../store.js";
+import { useState } from "react";
+
 
 function Cart() {
   // state -> store안에 있는 모든 state, 원하는 것만 가져다 쓸 수도 있음
@@ -10,6 +12,7 @@ function Cart() {
     return state;
   });
   let dispatch = useDispatch();
+  let [count, setcount] = useState(0)
 
   return (
     <div>

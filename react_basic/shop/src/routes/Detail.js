@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Nav } from "react-bootstrap";
 import { addItem } from "../store";
 import { useDispatch } from "react-redux";
+import { useLike } from "../hooks/like";
+import axios from "axios";
 
 function Detail(props) {
   let { id } = useParams();
@@ -22,14 +24,14 @@ function Detail(props) {
   let [fade2, setFade2] = useState("");
   let dispatch = useDispatch();
 
-  useEffect(()=>{
-  let 꺼낸거 = localStorage.getItem('watched')
-  꺼낸거 = JSON.parse(꺼낸거)
-  꺼낸거.push(찾은상품.id)
-  꺼낸거 = new Set (꺼낸거)
-  꺼낸거 = Array.from(꺼낸거)
-  localStorage.setItem('watched', JSON.stringify(꺼낸거))
-}, [])
+  useEffect(() => {
+    let 꺼낸거 = localStorage.getItem("watched");
+    꺼낸거 = JSON.parse(꺼낸거);
+    꺼낸거.push(찾은상품.id);
+    꺼낸거 = new Set(꺼낸거);
+    꺼낸거 = Array.from(꺼낸거);
+    localStorage.setItem("watched", JSON.stringify(꺼낸거));
+  }, []);
 
   // mount,update 시 실행된다
   // 서버에서 데이터가져오기, 어려운 연산,타이머 장착 등 할때 사용
@@ -49,8 +51,19 @@ function Detail(props) {
     };
   }, []);
 
+  let [like, addLike] = useLike();
+
+
   return (
     <div className={"container start " + fade2}>
+      <span
+        onClick={() => {
+          addLike();
+        }}
+      >
+        ❤{like}
+      </span>
+
       <div className="row mb-5">
         <div className="col-md-6">
           <img
@@ -64,6 +77,7 @@ function Detail(props) {
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}</p>
+
           <button
             className="btn btn-danger"
             onClick={() => {
